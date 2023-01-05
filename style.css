@@ -1,0 +1,173 @@
+html {
+    width: 100%;
+    background: linear-gradient(to right, #a6cabf, #70a494);
+    height: 100%;
+}
+
+body {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+/*Search input*/
+
+.search-input {
+    display: block;
+    min-width: 280px;
+    height: 30px;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+
+
+    border: 2px solid #b0a9a9;
+    border-radius: 15px;
+    background-color: #e8f1ef;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.search-input:focus {
+    background-color: #ffffff;
+    outline: none;
+    border-color: #d7cfcf; 
+}
+
+@media (min-width: 1024px) {
+    .search-input {
+        min-width: 800px;
+        height: 40px;
+        font-size: larger;
+        padding: 20px;
+        border-radius: 20px;
+    }
+}
+
+/*Dropping list*/
+
+.drop {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 30px auto;
+
+    padding: 0;
+    list-style: none;
+    max-width: 250px;
+
+    border-radius: 4px;
+
+    background-color: #bdcfca;
+}
+
+.drop__card {
+    display: block;
+    max-width: 250px;
+    min-width: 250px;
+    border-bottom: 1px solid #b0a9a9;
+    color: #304343;
+
+    padding: 10px;
+    font-size: 14px;
+}
+
+@media (min-width: 1024px) {
+    .drop {
+        max-width: 760px;
+        font-size: larger;
+        border-radius: 6px;
+    }
+
+    .drop__card {
+        max-width: 760px;
+        min-width: 760px;
+        padding: 20px;
+        font-size: 20px;
+    }
+}
+
+/*Saved list*/
+
+.saved {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 30px auto;
+
+    padding: 0;
+    list-style: none;
+    max-width: 250px;
+
+    border-radius: 4px;
+
+    background-color: #76bbd9;
+}
+
+.saved__card {
+    display: block;
+    max-width: 250px;
+    min-width: 250px;
+    border-bottom: 1px solid #6f5bed;
+    color: #304343;
+
+    padding: 10px;
+    font-size: 14px;
+    white-space: pre-wrap;
+    position: relative;
+}
+
+.saved__card:last-child {
+    border-bottom: none;
+}
+
+.saved__button {
+    min-width: 20px;
+    height: 20px;
+
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    border: none;
+    outline: none;
+    background-color: inherit;
+}
+
+.saved__button::after {
+    content: 'x';
+}
+
+@media (min-width: 1024px) {
+    .saved {
+        max-width: 760px;
+        font-size: larger;
+        border-radius: 6px;
+    }
+
+    .saved__card {
+        max-width: 760px;
+        min-width: 760px;
+        padding: 20px;
+        font-size: 20px;
+    }
+    
+    .saved__button {
+        min-width: 40px;
+        height: 40px;
+
+        top: 10px;
+        right: 10px;
+
+        font-size: large;
+    }
+}
