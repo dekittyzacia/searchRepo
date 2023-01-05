@@ -23,8 +23,8 @@ function createRepo (list, className, value) {
 }
 
 // Creating dropcards function
-function createDropRepo(list, className, value, repo) {
-    let dropElem = createRepo(list, className, value);
+function createDropRepo(value, repo) {
+    let dropElem = createRepo(dropList, 'drop__card', value);
     dropElem.addEventListener('click', () => {
       saveRepo(repo);
       searchInput.value = '';
@@ -52,7 +52,10 @@ async function requestGitHub (value) {
     return await fetch(`https://api.github.com/search/repositories?q=${value}+in:name&sort=stars`)
       .then(response => response.json())
       .then(data => (data.items).slice(0, 5))
-      .catch(e => console.log('Request error: ' + e))
+      .catch(e => {
+        createRepo(dropList, 'drop__card', 'Sorry, request is unsuccsessful');
+        console.warn('Request error: ' + e);
+      })
   }
 }
 
@@ -60,10 +63,10 @@ async function requestGitHub (value) {
 async function createDropList (value) {
   let list = await requestGitHub(value);
   if (searchInput.value !== '' && list && list.length === 0) {
-    createDropRepo(dropList, 'drop__card', 'Sorry, there is no repos with that name, change your request, please')
+    createRepo(dropList, 'drop__card', 'Sorry, there is no repos with that name, change your request, please')
   } else if (list && list.length !== 0) {
     for (let item of list) {
-      createDropRepo(dropList, 'drop__card', item.name, item);
+      createDropRepo(item.name, item);
     }
   }
 }
